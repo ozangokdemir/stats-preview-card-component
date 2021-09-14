@@ -1,0 +1,197 @@
+:root{
+    /*COLORS*/
+    --very-dark-blue: hsl(233, 47%, 7%);
+    --dark-saturated-blue: hsl(244, 38%, 16%);
+    --soft-violet: hsl(277, 64%, 61%);
+
+    --white: hsl(0, 0%, 100%);
+    --slighlty-transparent-white: hsla(0, 0%, 100%, 0.75);
+    --slighlty-transparent-white-stats: hsla(0, 0%, 100%, 0.6);
+
+    /*TYPOGRAPHY*/
+    --body-font-size: 15px;
+    --body-font-family-first: 'Inter', sans-serif;
+    --body-font-family-second: 'Lexend Deca', sans-serif;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap; /* added line */
+    border: 0;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+        
+    background-color: var(--very-dark-blue);
+        
+    color: var(--white);
+    font-size: var(--body-font-size);
+    font-family: var(--body-font-family-first);
+}
+
+.l-frame{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 100vh;
+}
+
+.l-content{
+    height: 446px;
+    width: 570px;
+
+    padding: 2.7em 7em 2.3em 5em;
+    border-radius: 10px 0 0 10px;
+
+    background: var(--dark-saturated-blue);
+
+    box-sizing: border-box; /*Fix box sizing to remove padding deformation*/
+}
+
+.content-main-title{
+    font-size: 2.4em;
+    font-weight: 700;
+
+    line-height: 1.2em;
+}
+
+.content-main-title em{
+    color: var(--soft-violet);
+    font-style: normal; /*To remove em tag behaviour*/
+}
+
+.content-text{
+    margin-top: -.5em;
+
+    color: var(--slighlty-transparent-white);
+    line-height: 1.8em;
+}
+
+.l-header{
+    display: block; /* Ensure image is aligned with the box on its side */
+    height: auto;
+    width: auto;
+}
+.img-header-mobile{
+    display: none;
+    filter: grayscale(100%) brightness(39%) sepia(100%) hue-rotate(234deg) saturate(580%) contrast(.8);
+}
+
+.img-header-desktop{
+    border-radius: 0 10px 10px 0;
+    filter: grayscale(100%) brightness(39%) sepia(100%) hue-rotate(234deg) saturate(580%) contrast(.8);
+}
+
+.l-content-data{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    margin-top: 4em;
+}
+
+.data{
+    font-family: var(--body-font-family-second);
+    text-transform: uppercase;
+    font-size: .8em;
+
+    color: var(--slighlty-transparent-white-stats);
+
+    line-height: 2em;
+}
+
+.data em{
+    color: var(--white);
+
+    font-family: var(--body-font-family-first);
+    font-style: normal;
+    font-size: 2em;
+    font-weight: 700;
+}
+.data:nth-child(1) em{ text-transform: lowercase; }
+
+.data:first-child ~ .data{ padding-left: 1em; }
+
+.attribution { font-size: 11px; text-align: center; }
+.attribution a { color: hsl(228, 45%, 44%); }
+
+
+@media (max-width: 1160px) {
+    .l-frame{
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+
+    .l-content{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+
+        width: 540px;
+        height: auto;
+        margin-bottom: 5em;
+
+        padding: 3em 5em 3em 5em;
+
+        border-radius: 0 0 10px 10px;
+    }
+
+    .l-header{
+        display: flex;
+        margin-top: 5em;
+    }
+
+    .img-header-desktop, .l-header::before{
+        border-radius: 10px 10px 0 0;
+    }
+
+    .l-content-data{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        text-align: center;
+
+        margin-top: 1em;
+
+        font-size: 1.1em;
+    }
+
+    .content-text{ font-size: 1.1em; }
+
+    .data:first-child ~ .data{ padding-left: 0em; }
+
+}
+
+@media (max-width: 620px) {
+
+    .img-header-desktop{ display: none; }
+    
+    .img-header-mobile{
+        display: initial;
+        width: 90vw;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .l-content{
+        width: 90vw;
+        padding: 1em 2.3em 1em 2.3em;
+    }
+
+    .content-main-title{
+        font-size: 1.8em;
+        letter-spacing: .5px;
+    }
+
+    .content-text{ font-size: 1em; }
+
+    .data{ font-size: .7em; }
+    
+}
